@@ -112,7 +112,7 @@ int setValue(unsigned char n)
     }
     // Testando...
 }
-
+// Iai fdp
 int getValue(unsigned char n)
 {
     if (n > 0 && n < RANGE_IO)
