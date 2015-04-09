@@ -110,7 +110,6 @@ int setValue(unsigned char n)
     {
         return -1;
     }
-    // Testando...
 }
 
 int getValue(unsigned char n)
@@ -123,21 +122,4 @@ int getValue(unsigned char n)
     {
         return -1;
     }
-}
-
-int getValue(unsigned char n)
-{
-    if (n <= 0 && n < RANGE_IO)
-    {
-        // ler arquivo /sys/class/gpio/gpio<n>/value e retornar valor inteiro.
-    }
-    else
-    {
-        return -1;
-    }
-}
-
-int testeCadu() {
-	// so pra ver onde a zuera vai parar
-	return 1;
 }
