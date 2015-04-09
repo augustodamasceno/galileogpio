@@ -1,0 +1,7 @@
+build/
+dist/
+nbproject/
+ignorados/
+Makefile
+.dep.inc
+
