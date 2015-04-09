@@ -1,6 +1,6 @@
 /* Library galileogpio, easy access to Intel Galileo GPIOs.
  * 
- * Copyright (c) 2015, Augusto Damasceno, Eduardo ..., Sérgio ... .
+ * Copyright (c) 2015, Augusto Damasceno(@augustomatheuss), Carlos Bentzen(@cadubentzen), Sérgio Roza(@kalmik).
  * All rights reserved.
  * 
  * Redistribution and use in source and binary forms, with or without modification,
@@ -27,7 +27,6 @@
 
 #include "galileogpio.h"
 
-// comentei so de zoa xD
 
 int write(char * f, char * t)
 {
