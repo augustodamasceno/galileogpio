@@ -110,6 +110,7 @@ int setValue(unsigned char n)
     {
         return -1;
     }
+    // Testando...
 }
 
 int getValue(unsigned char n)
