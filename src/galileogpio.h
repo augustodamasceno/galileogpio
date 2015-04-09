@@ -30,8 +30,37 @@
 
 #include <stdio.h>
 
-#define RANGE_IO 54
+#define RANGE_IO 51
+#define HIGH "1"
+#define LOW "0"
+#define IN "in"
+#define OUT "out"
+#define PULLUP "pullup"
+#define PULLDOWN "pulldown"
+#define STRONG "strong"
+#define HIZ "hiz"
+#define IO0 "50"
+#define IO1 "51"
+#define IO2 "32"
+#define IO3 "18"
+#define IO4 "28"
+#define IO5 "17"
+#define IO6 "24"
 #define IO7 "27"
+#define IO8 "28"
+#define IO9 "19"
+#define IO10 "16"
+#define IO11 "25"
+#define IO12 "38"
+#define IO13 "39"
+#define ADMUX0 "37"
+#define ADMUX1 "36"
+#define ADMUX2 "23"
+#define ADMUX3 "22"
+#define ADMUX4A "21"
+#define ADMUX4B "29"
+#define ADMUX5A "20"
+#define ADMUX5B "29"
 
 // File Manipulation.
 
@@ -43,16 +72,17 @@ int read(char * f, char * t);
 
 int exportIO(unsigned char * n);
 
-int direction(unsigned char n, unsigned char * d);
+int direction(unsigned char * n, unsigned char * d);
 
-int drive(unsigned char n, unsigned char * d);
+int drive(unsigned char * n, unsigned char * d);
 
-int setValue(unsigned char n);
+int setValue(unsigned char * n, unsigned char * d);
 
-int getValue(unsigned char n);
+int getValue(unsigned char * n, unsigned char * d);
 
 // AD
 
+int setADmux(unsigned char * m);
 
 // PWM
 

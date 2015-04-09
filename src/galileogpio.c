@@ -74,12 +74,13 @@ int exportIO(unsigned char * n)
     }
 }
 
-int direction(unsigned char n, unsigned char * d)
+int direction(unsigned char * n, unsigned char * d)
 {
     if (n > 0 && n < RANGE_IO)
     {
-        // Escreva "in" no arquivo /sys/class/gpio/export se d == 0
-        // Escreva "out" no arquivo /sys/class/gpio/export se d == 1
+        char f [34];
+        sprintf(f,"/sys/class/gpio/gpio%s/direction",n);
+        return write(f,d);
     }
     else
     {
@@ -87,12 +88,13 @@ int direction(unsigned char n, unsigned char * d)
     }
 }
 
-int drive(unsigned char n, unsigned char * d)
+int drive(unsigned char * n, unsigned char * d)
 {
     if (n > 0 && n < RANGE_IO)
     {
-        // Escreva "in" no arquivo /sys/class/gpio/export se d == 0
-        // Escreva "out" no arquivo /sys/class/gpio/export se d == 1
+        char f [30];
+        sprintf(f,"/sys/class/gpio/gpio%s/drive",n);
+        return write(f,d);
     }
     else
     {
@@ -100,11 +102,13 @@ int drive(unsigned char n, unsigned char * d)
     }
 }
 
-int setValue(unsigned char n)
+int setValue(unsigned char * n, unsigned char * d)
 {
     if (n > 0 && n < RANGE_IO)
     {
-        // Escreva n no arquivo /sys/class/gpio/export
+        char f [30];
+        sprintf(f,"/sys/class/gpio/gpio%s/value",n);
+        return write(f,d);
     }
     else
     {
@@ -112,14 +116,27 @@ int setValue(unsigned char n)
     }
 }
 
-int getValue(unsigned char n)
+int getValue(unsigned char * n, unsigned char * d)
 {
     if (n > 0 && n < RANGE_IO)
     {
-        // ler arquivo /sys/class/gpio/gpio<n>/value e retornar valor inteiro.
+        char f [30];
+        sprintf(f,"/sys/class/gpio/gpio%s/value",n);
+        return read(f,d);
     }
     else
     {
         return -1;
     }
+}
+
+int setADmux(unsigned char * m)
+{
+    return 0;
+    // exportIO
+    // direction
+    // value
+    /*
+    char f [24];
+    sprintf("in_voltage%s_raw",m);*/
 }
