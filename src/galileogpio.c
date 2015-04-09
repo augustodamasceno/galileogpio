@@ -136,3 +136,8 @@ int getValue(unsigned char n)
         return -1;
     }
 }
+
+int testeCadu() {
+	// so pra ver onde a zuera vai parar
+	return 1;
+}
