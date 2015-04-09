@@ -27,6 +27,7 @@
 
 #include "galileogpio.h"
 
+// comentei so de zoa xD
 
 int write(char * f, char * t)
 {
