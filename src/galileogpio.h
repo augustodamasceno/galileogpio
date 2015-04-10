@@ -29,8 +29,9 @@
 #define	GALILEOGPIO_H
 
 #include <stdio.h>
+#include <string.h>
 
-#define RANGE_IO 51
+#define RANGE_IO "51"
 #define HIGH "1"
 #define LOW "0"
 #define IN "in"
@@ -61,6 +62,11 @@
 #define ADMUX4B "29"
 #define ADMUX5A "20"
 #define ADMUX5B "29"
+#define ANALOG0 "0"
+#define ANALOG1 "1"
+#define ANALOG2 "2"
+#define ANALOG3 "3"
+#define ANALOG4 "4" 
 
 // File Manipulation.
 

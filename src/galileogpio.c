@@ -32,39 +32,33 @@ int write(char * f, char * t)
 {
      FILE * rF;
      rF = fopen(f,"w");
-     if (rF != NULL)
+     if (rF == NULL)
      {
-        fprintf (rF,"%s",t);
-        fclose (rF);
-        return 0;
+     	return -1;
      }
-     else
-     {
-         return -1;
-     }
+    	fprintf (rF,"%s",t);
+	fclose (rF);
+	return 0;
 }
 
 int read(char * f, char * t)
 {
      FILE * rF;
      rF = fopen (f,"r");
-     if (rF != NULL)
+     if (rF == NULL)
      {
-        fscanf (rF,"%s",t);
-        fclose (rF);
-        return 0;
+     	return -1;
      }
-     else
-     {
-         return -1;
-     }
+     fscanf (rF,"%s",t);
+     fclose (rF);
+     return 0;
 }
 
 // Digital IOs
 
 int exportIO(unsigned char * n)
 {
-    if (n > 0 && n < RANGE_IO)
+    if (strcmp(n,"0") > 0 && strcmp(n,RANGE_IO) <= 0)
     {
         return write("/sys/class/gpio/export",n);
     }
@@ -76,7 +70,7 @@ int exportIO(unsigned char * n)
 
 int direction(unsigned char * n, unsigned char * d)
 {
-    if (n > 0 && n < RANGE_IO)
+    if (strcmp(n,"0") > 0 && strcmp(n,RANGE_IO) <= 0)
     {
         char f [34];
         sprintf(f,"/sys/class/gpio/gpio%s/direction",n);
@@ -90,7 +84,7 @@ int direction(unsigned char * n, unsigned char * d)
 
 int drive(unsigned char * n, unsigned char * d)
 {
-    if (n > 0 && n < RANGE_IO)
+    if (strcmp(n,"0") > 0 && strcmp(n,RANGE_IO) <= 0)
     {
         char f [30];
         sprintf(f,"/sys/class/gpio/gpio%s/drive",n);
@@ -104,7 +98,7 @@ int drive(unsigned char * n, unsigned char * d)
 
 int setValue(unsigned char * n, unsigned char * d)
 {
-    if (n > 0 && n < RANGE_IO)
+    if (strcmp(n,"0") > 0 && strcmp(n,RANGE_IO) <= 0)
     {
         char f [30];
         sprintf(f,"/sys/class/gpio/gpio%s/value",n);
@@ -118,7 +112,7 @@ int setValue(unsigned char * n, unsigned char * d)
 
 int getValue(unsigned char * n, unsigned char * d)
 {
-    if (n > 0 && n < RANGE_IO)
+    if (strcmp(n,"0") > 0 && strcmp(n,RANGE_IO) <= 0)
     {
         char f [30];
         sprintf(f,"/sys/class/gpio/gpio%s/value",n);
