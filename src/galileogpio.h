@@ -29,9 +29,13 @@
 #define	GALILEOGPIO_H
 
 #include <stdio.h>
+#include <string.h>
 
 #define HIGH 1
 #define LOW 0
+#define RANGE_IO "51"
+#define HIGH "1"
+#define LOW "0"
 #define IN "in"
 #define OUT "out"
 #define PULLUP "pullup"
@@ -61,15 +65,15 @@
 #define ADMUX5A 20
 #define ADMUX5B 29
 
-// Auxiliaries.
-
-int exist(unsigned char n);
-
 // File Manipulation.
 
-int write(char * f, char * t);
+int writeString (char * f, char * t);
 
-int read(char * f, char * t);
+int writeInt (char * f, int t);
+
+int readString (char * f, char * t);
+
+int readInt (char * f); 
 
 // Digital IOs
 
@@ -86,6 +90,8 @@ int getDigital(unsigned char * n);
 // AD
 
 //int setADmux(unsigned char * m);
+
+int analogRead(unsigned char * m);
 
 // PWM
 
