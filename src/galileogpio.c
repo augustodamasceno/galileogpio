@@ -127,7 +127,7 @@ int getValue(unsigned char n)
 
 int getValue(unsigned char n)
 {
-    if (n == 0 && n < RANGE_IO)
+    if (n <= 0 && n < RANGE_IO)
     {
         // ler arquivo /sys/class/gpio/gpio<n>/value e retornar valor inteiro.
     }
