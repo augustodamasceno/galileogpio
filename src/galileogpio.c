@@ -30,28 +30,28 @@
 
 int write(char * f, char * t)
 {
-     FILE * rF;
-     rF = fopen(f,"w");
-     if (rF == NULL)
-     {
-     	return -1;
-     }
-    	fprintf (rF,"%s",t);
+	FILE * rF;
+	rF = fopen(f,"w");
+	if (rF == NULL)
+	{
+		return -1;
+	}
+    fprintf (rF,"%s",t);
 	fclose (rF);
 	return 0;
 }
 
 int read(char * f, char * t)
 {
-     FILE * rF;
-     rF = fopen (f,"r");
-     if (rF == NULL)
-     {
-     	return -1;
-     }
-     fscanf (rF,"%s",t);
-     fclose (rF);
-     return 0;
+	FILE * rF;
+	rF = fopen (f,"r");
+	if (rF == NULL)
+	{
+		return -1;
+	}
+	fscanf (rF,"%s",t);
+	fclose (rF);
+	return 0;
 }
 
 // Digital IOs
@@ -62,10 +62,7 @@ int exportIO(unsigned char * n)
     {
         return write("/sys/class/gpio/export",n);
     }
-    else
-    {
-        return -1;
-    }
+    return -1;
 }
 
 int direction(unsigned char * n, unsigned char * d)
@@ -76,10 +73,7 @@ int direction(unsigned char * n, unsigned char * d)
         sprintf(f,"/sys/class/gpio/gpio%s/direction",n);
         return write(f,d);
     }
-    else
-    {
-        return -1;
-    }
+    return -1;
 }
 
 int drive(unsigned char * n, unsigned char * d)
@@ -90,10 +84,7 @@ int drive(unsigned char * n, unsigned char * d)
         sprintf(f,"/sys/class/gpio/gpio%s/drive",n);
         return write(f,d);
     }
-    else
-    {
-        return -1;
-    }
+    return -1;
 }
 
 int setValue(unsigned char * n, unsigned char * d)
@@ -104,10 +95,7 @@ int setValue(unsigned char * n, unsigned char * d)
         sprintf(f,"/sys/class/gpio/gpio%s/value",n);
         return write(f,d);
     }
-    else
-    {
-        return -1;
-    }
+    return -1;
 }
 
 int getValue(unsigned char * n, unsigned char * d)
@@ -118,19 +106,42 @@ int getValue(unsigned char * n, unsigned char * d)
         sprintf(f,"/sys/class/gpio/gpio%s/value",n);
         return read(f,d);
     }
-    else
-    {
-        return -1;
-    }
+    return -1;
 }
 
 int setADmux(unsigned char * m)
 {
-    return 0;
+	if (!strcmp(m,ADMUX4A))
+	{
+		if (!exportIO(m) && !direction(OUT) && !setValue(LOW))
+		{
+			return -!(!exportIO(ADMUX4B) && !direction(OUT) && !setValue(HIGH));
+		}
+	}
+	else if (!strcmp(m,ADMUX%A))
+	{
+		if (!(exportIO(m) && direction(OUT) && setValue(LOW)))
+		{
+			return -!(!exportIO(ADMUX5B) && !direction(OUT) && !setValue(HIGH));
+		}
+	}
+    return -!(!exportIO(m) && !direction(OUT) && !setValue(LOW));
     // exportIO
     // direction
     // value
     /*
     char f [24];
     sprintf("in_voltage%s_raw",m);*/
+}
+
+int analogRead(unsigned char * m, unsigned char * d) 
+{
+	if (strcmp(n,"0") > 0 && strcmp(n,RANGE_IO) <= 0)
+	{
+		char f [51];
+		sprintf(f,"/sys/bus/iio/devices/iio:device0/in_voltage%s_raw",m);
+		return read(f,d);
+	}
+	return -1;
+	
 }
