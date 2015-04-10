@@ -27,8 +27,8 @@
 
 #include "galileogpio.h"
 
-
-int writeString(char * f, char * t)
+// File manipulation
+int writeString (char * f, char * t)
 {
 	FILE * rF;
 	rF = fopen(f,"w");
@@ -41,7 +41,7 @@ int writeString(char * f, char * t)
 	return 0;
 }
 
-int writeInt(char * f, int t)
+int writeInt (char * f, int t)
 {
 	FILE * rF;
 	rF = fopen(f,"w");
@@ -54,7 +54,7 @@ int writeInt(char * f, int t)
 	return 0;
 }
 
-int read(char * f, char * t)
+int readString (char * f, char * t)
 {
 	FILE * rF;
 	rF = fopen (f,"r");
@@ -65,6 +65,20 @@ int read(char * f, char * t)
 	fscanf (rF,"%s",t);
 	fclose (rF);
 	return 0;
+}
+
+int readInt (char * f)
+{
+	FILE * rF;
+	int value;
+	rF = fopen (f,"r");
+	if (rF == NULL)
+	{
+		return -1;
+	}
+	fscanf (rF,"%d",&value);
+	fclose (rF);
+	return value;
 }
 
 // Digital IOs

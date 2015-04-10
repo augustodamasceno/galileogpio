@@ -70,9 +70,13 @@
 
 // File Manipulation.
 
-int write(char * f, char * t);
+int writeString (char * f, char * t);
 
-int read(char * f, char * t);
+int writeInt (char * f, int t);
+
+int readString (char * f, char * t);
+
+int readInt (char * f); 
 
 // Digital IOs
 
@@ -89,6 +93,8 @@ int getValue(unsigned char * n, unsigned char * d);
 // AD
 
 int setADmux(unsigned char * m);
+
+int analogRead(unsigned char * m);
 
 // PWM
 
