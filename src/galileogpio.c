@@ -111,14 +111,14 @@ int drive(unsigned char n, unsigned char * d)
 int setDigital(unsigned char n, unsigned char d)
 {
     char f [30];
-    sprintf(f,"/sys/class/gpio/gpio%s/value",n);
+    sprintf(f,"/sys/class/gpio/gpio%d/value",n);
     return writeInt(f,d);
 }
 
 int getDigital(unsigned char n)
 {
     char f [30];
-    sprintf(f,"/sys/class/gpio/gpio%s/value",n);
+    sprintf(f,"/sys/class/gpio/gpio%d/value",n);
     return readInt(f);
 }
 

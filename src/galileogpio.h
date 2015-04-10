@@ -92,7 +92,7 @@ int getDigital(unsigned char n);
 
 //int setADmux(unsigned char * m);
 
-int analogRead(unsigned char * m);
+//int analogRead(unsigned char * m);
 
 // PWM
 
