@@ -28,7 +28,7 @@
 #include "galileogpio.h"
 
 
-int write(char * f, char * t)
+int writeString(char * f, char * t)
 {
 	FILE * rF;
 	rF = fopen(f,"w");
@@ -37,6 +37,19 @@ int write(char * f, char * t)
 		return -1;
 	}
     fprintf (rF,"%s",t);
+	fclose (rF);
+	return 0;
+}
+
+int writeInt(char * f, int t)
+{
+	FILE * rF;
+	rF = fopen(f,"w");
+	if (rF == NULL)
+	{
+		return -1;
+	}
+    fprintf (rF,"%d",t);
 	fclose (rF);
 	return 0;
 }
