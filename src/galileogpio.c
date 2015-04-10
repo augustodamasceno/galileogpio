@@ -27,6 +27,14 @@
 
 #include "galileogpio.h"
 
+// Auxiliaries.
+
+int exist(unsigned char n)
+{
+    return 0;
+}
+
+// File Manipulation.
 
 int write(char * f, char * t)
 {
@@ -62,7 +70,7 @@ int read(char * f, char * t)
 
 // Digital IOs
 
-int exportIO(unsigned char * n)
+int exportIO(unsigned char n)
 {
     if (n > 0 && n < RANGE_IO)
     {
@@ -74,7 +82,7 @@ int exportIO(unsigned char * n)
     }
 }
 
-int direction(unsigned char * n, unsigned char * d)
+int direction(unsigned char n, unsigned char * d)
 {
     if (n > 0 && n < RANGE_IO)
     {
@@ -88,7 +96,7 @@ int direction(unsigned char * n, unsigned char * d)
     }
 }
 
-int drive(unsigned char * n, unsigned char * d)
+int drive(unsigned char n, unsigned char * d)
 {
     if (n > 0 && n < RANGE_IO)
     {
@@ -102,7 +110,7 @@ int drive(unsigned char * n, unsigned char * d)
     }
 }
 
-int setValue(unsigned char * n, unsigned char * d)
+int setValue(unsigned char * n, unsigned char d)
 {
     if (n > 0 && n < RANGE_IO)
     {
@@ -116,7 +124,7 @@ int setValue(unsigned char * n, unsigned char * d)
     }
 }
 
-int getValue(unsigned char * n, unsigned char * d)
+int getValue(unsigned char * n)
 {
     if (n > 0 && n < RANGE_IO)
     {
@@ -130,7 +138,7 @@ int getValue(unsigned char * n, unsigned char * d)
     }
 }
 
-int setADmux(unsigned char * m)
+/*int setADmux(unsigned char * m)
 {
     return 0;
     // exportIO
@@ -138,5 +146,6 @@ int setADmux(unsigned char * m)
     // value
     /*
     char f [24];
-    sprintf("in_voltage%s_raw",m);*/
+    sprintf("in_voltage%s_raw",m);
 }
+*/
