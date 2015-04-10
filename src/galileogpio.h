@@ -65,6 +65,7 @@
 #define ADMUX5A 20
 #define ADMUX5B 29
 
+
 // File Manipulation.
 
 int writeString (char * f, char * t);
@@ -83,9 +84,9 @@ int direction(unsigned char n, unsigned char * d);
 
 int drive(unsigned char n, unsigned char * d);
 
-int setDigital(unsigned char * n, unsigned char d);
+int setDigital(unsigned char n, unsigned char d);
 
-int getDigital(unsigned char * n);
+int getDigital(unsigned char n);
 
 // AD
 

@@ -27,89 +27,74 @@
 
 #include "galileogpio.h"
 
-// Auxiliaries.
-
-int exist(unsigned char n)
-{
-    return 0;
-}
-
 // File manipulation
 
 int writeString (char * f, char * t)
 {
-	FILE * rF;
-	rF = fopen(f,"w");
-	if (rF == NULL)
-	{
-		return -1;
-	}
+    FILE * rF;
+    rF = fopen(f,"r+");
+    if (rF == NULL)
+    {
+	return -1;
+    }
     fprintf (rF,"%s",t);
-	fclose (rF);
-	return 0;
+    fclose (rF);
+    return 0;
 }
 
 int writeInt (char * f, int t)
 {
-	FILE * rF;
-	rF = fopen(f,"w");
-	if (rF == NULL)
-	{
-		return -1;
-	}
+    FILE * rF;
+    rF = fopen(f,"r+");
+    if (rF == NULL)
+    {
+	return -1;
+    }
     fprintf (rF,"%d",t);
-	fclose (rF);
-	return 0;
+    fclose (rF);
+    return 0;
 }
 
 
 int readString (char * f, char * t)
 {
-	FILE * rF;
-	rF = fopen (f,"r");
-	if (rF == NULL)
-	{
-		return -1;
-	}
-	fscanf (rF,"%s",t);
-	fclose (rF);
-	return 0;
+    FILE * rF;
+    rF = fopen (f,"r+");
+    if (rF == NULL)
+    {
+        return -1;
+    }
+    fscanf (rF,"%s",t);
+    fclose (rF);
+    return 0;
 }
 
 int readInt (char * f)
 {
-	FILE * rF;
-	int value;
-	rF = fopen (f,"r");
-	if (rF == NULL)
-	{
-		return -1;
-	}
-	fscanf (rF,"%d",&value);
-	fclose (rF);
-	return value;
+    FILE * rF;
+    int value;
+    rF = fopen (f,"r+");
+    if (rF == NULL)
+    {
+        return -1;
+    }
+    fscanf (rF,"%d",&value);
+    fclose (rF);
+    return value;
 }
 
 // Digital IOs
 
 int exportIO(unsigned char n)
 {
-    if (strcmp(n,"0") > 0 && strcmp(n,RANGE_IO) <= 0)
-    {
-        return write("/sys/class/gpio/export",n);
-    }
-    return -1;
+    return writeInt("/sys/class/gpio/export",n);
 }
 
 int direction(unsigned char n, unsigned char * d)
 {
-    if (strcmp(n,"0") > 0 && strcmp(n,RANGE_IO) <= 0)
-    {
-        char f [34];
-        sprintf(f,"/sys/class/gpio/gpio%s/direction",n);
-        return write(f,d);
-    }
-    return -1;
+    char f [34];
+    sprintf(f,"/sys/class/gpio/gpio%d/direction",n);
+    return writeString(f,d);
 }
 
 int drive(unsigned char n, unsigned char * d)
@@ -117,32 +102,24 @@ int drive(unsigned char n, unsigned char * d)
     if (strcmp(n,"0") > 0 && strcmp(n,RANGE_IO) <= 0)
     {
         char f [30];
-        sprintf(f,"/sys/class/gpio/gpio%s/drive",n);
-        return write(f,d);
+        sprintf(f,"/sys/class/gpio/gpio%d/drive",n);
+        return writeString(f,d);
     }
     return -1;
 }
 
-int setValue(unsigned char * n, unsigned char d)
+int setDigital(unsigned char n, unsigned char d)
 {
-    if (strcmp(n,"0") > 0 && strcmp(n,RANGE_IO) <= 0)
-    {
-        char f [30];
-        sprintf(f,"/sys/class/gpio/gpio%s/value",n);
-        return write(f,d);
-    }
-    return -1;
+    char f [30];
+    sprintf(f,"/sys/class/gpio/gpio%s/value",n);
+    return writeInt(f,d);
 }
 
-int getValue(unsigned char * n)
+int getDigital(unsigned char n)
 {
-    if (strcmp(n,"0") > 0 && strcmp(n,RANGE_IO) <= 0)
-    {
-        char f [30];
-        sprintf(f,"/sys/class/gpio/gpio%s/value",n);
-        return read(f,d);
-    }
-    return -1;
+    char f [30];
+    sprintf(f,"/sys/class/gpio/gpio%s/value",n);
+    return readInt(f);
 }
 
 /*int setADmux(unsigned char * m)
