@@ -84,7 +84,7 @@ int readInt (char * f);
 
 // Digital IOs
 
-int exportIO(unsigned char n);
+int exportDigital(unsigned char n);
 
 int direction(unsigned char n, unsigned char * d);
 
@@ -104,6 +104,10 @@ int getAnalog(unsigned char n);
 
 // PWM
 
+int exportPWM(unsigned char n);
+int enablePWM(unsigned char n);
+int setPeriodPWM(int period);
+int setDutyCycle(int dutyCycle);
 
 // Counters
 
