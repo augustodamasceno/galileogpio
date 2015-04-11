@@ -5,3 +5,4 @@ ignorados/
 Makefile
 .dep.inc
 enviar.sh
+teste.c

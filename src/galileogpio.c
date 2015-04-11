@@ -32,7 +32,7 @@
 int writeString (char * f, char * t)
 {
     FILE * rF;
-    rF = fopen(f,"w+");
+    rF = fopen(f,"r+");
     if (rF == NULL)
     {
 	return -1;
@@ -45,7 +45,7 @@ int writeString (char * f, char * t)
 int writeInt (char * f, int t)
 {
     FILE * rF;
-    rF = fopen(f,"w+");
+    rF = fopen(f,"r+");
     if (rF == NULL)
     {
 	return -1;
@@ -119,7 +119,7 @@ int getDigital(unsigned char n)
 }
 
 // Analog Inputs
-
+/*
 int exportAnalog (unsigned char n)
 {
 	switch(n)
@@ -154,3 +154,4 @@ int getAnalog(unsigned char n)
 	sprintf(f,"/sys/bus/iio/devices/iio:device0/in_voltage%d_raw",n);
 	return readInt(f);
 }
+*/

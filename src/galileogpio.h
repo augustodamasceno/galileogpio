@@ -95,13 +95,13 @@ int setDigital(unsigned char n, unsigned char d);
 int getDigital(unsigned char n);
 
 // Analog Inputs
-
+/*
 // Wouldn't be easier just a exportAnalog?
 int exportAnalog (unsigned char n);
 //int setADmux(unsigned char n);
 
 int getAnalog(unsigned char n);
-
+*/
 // PWM
 
 int exportPWM(unsigned char n);
