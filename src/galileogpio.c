@@ -32,7 +32,7 @@
 int writeString (char * f, char * t)
 {
     FILE * rF;
-    rF = fopen(f,"r+");
+    rF = fopen(f,"w+");
     if (rF == NULL)
     {
 	return -1;
@@ -45,7 +45,7 @@ int writeString (char * f, char * t)
 int writeInt (char * f, int t)
 {
     FILE * rF;
-    rF = fopen(f,"r+");
+    rF = fopen(f,"w+");
     if (rF == NULL)
     {
 	return -1;
@@ -99,13 +99,9 @@ int direction(unsigned char n, unsigned char * d)
 
 int drive(unsigned char n, unsigned char * d)
 {
-    if (strcmp(n,"0") > 0 && strcmp(n,RANGE_IO) <= 0)
-    {
-        char f [30];
-        sprintf(f,"/sys/class/gpio/gpio%d/drive",n);
-        return writeString(f,d);
-    }
-    return -1;
+	char f [30];
+    sprintf(f,"/sys/class/gpio/gpio%d/drive",n);
+    return writeString(f,d);	
 }
 
 int setDigital(unsigned char n, unsigned char d)
@@ -122,27 +118,39 @@ int getDigital(unsigned char n)
     return readInt(f);
 }
 
-/*int setADmux(unsigned char * m)
+// Analog Inputs
+
+int exportAnalog (unsigned char n)
 {
-	if (!strcmp(m,ADMUX4A))
+	switch(n)
 	{
-		if (!exportIO(m) && !direction(OUT) && !setValue(LOW))
-		{
-			return -!(!exportIO(ADMUX4B) && !direction(OUT) && !setValue(HIGH));
-		}
+		case ANALOG0:
+			return -!(!exportIO(ADMUX0) && !direction(OUT) && !setValue(LOW));
+			break;
+		case ANALOG1:
+			return -!(!exportIO(ADMUX1) && !direction(OUT) && !setValue(LOW));
+			break;
+		case ANALOG2:
+			return -!(!exportIO(ADMUX2) && !direction(OUT) && !setValue(LOW));
+			break;
+		case ANALOG3:
+			return -!(!exportIO(ADMUX3) && !direction(OUT) && !setValue(LOW));
+			break;
+		case ANALOG4:
+			return -!(!exportIO(ADMUX4A) && !direction(OUT) && !setValue(LOW) && !exportIO(ADMUX4B) && !direction(OUT) && !setValue(HIGH));
+			break;
+		case ANALOG5:
+			return -!(!exportIO(ADMUX5A) && !direction(OUT) && !setValue(LOW) && !exportIO(ADMUX5B) && !direction(OUT) && !setValue(HIGH));
+			break;
+		default:
+			return -1;
+			break;
 	}
-	else if (!strcmp(m,ADMUX%A))
-	{
-		if (!(exportIO(m) && direction(OUT) && setValue(LOW)))
-		{
-			return -!(!exportIO(ADMUX5B) && !direction(OUT) && !setValue(HIGH));
-		}
-	}
-    return -!(!exportIO(m) && !direction(OUT) && !setValue(LOW));
-    // exportIO
-    // direction
-    // value
-    /*
-    char f [24];
-    sprintf("in_voltage%s_raw",m);
-}*/
+}
+
+int getAnalog(unsigned char n)
+{
+	char f[51];
+	sprintf(f,"/sys/bus/iio/devices/iio:device0/in_voltage%d_raw",n);
+	return readInt(f);
+}

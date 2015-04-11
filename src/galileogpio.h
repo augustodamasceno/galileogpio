@@ -64,6 +64,12 @@
 #define ADMUX4B 29
 #define ADMUX5A 20
 #define ADMUX5B 29
+#define ANALOG0 0
+#define ANALOG1 1
+#define ANALOG2 2
+#define ANALOG3 3
+#define ANALOG4 4
+#define ANALOG5 5
 
 
 // File Manipulation.
@@ -88,11 +94,13 @@ int setDigital(unsigned char n, unsigned char d);
 
 int getDigital(unsigned char n);
 
-// AD
+// Analog Inputs
 
-//int setADmux(unsigned char * m);
+// Wouldn't be easier just a exportAnalog?
+int exportAnalog (unsigned char n);
+//int setADmux(unsigned char n);
 
-//int analogRead(unsigned char * m);
+int getAnalog(unsigned char n);
 
 // PWM
 
