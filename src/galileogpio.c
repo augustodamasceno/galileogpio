@@ -153,39 +153,48 @@ int exportIO(unsigned char n)
 
 int unexportIO(unsigned char n)
 {
+    int r;
     switch (n)
     {
         case (IO0):
-            return writeInt("/sys/class/gpio/unexport",IO0) +
-                writeInt("/sys/class/gpio/unexport",IO0A);
+            r = writeInt("/sys/class/gpio/unexport",IO0);
+            r += writeInt("/sys/class/gpio/unexport",IO0A);
+            return r;
             break;
         case (IO1):
-            return writeInt("/sys/class/gpio/unexport",IO1) +
-                writeInt("/sys/class/gpio/unexport",IO1A);
+            r = writeInt("/sys/class/gpio/unexport",IO1);
+            r += writeInt("/sys/class/gpio/unexport",IO1A);
+            return r;
             break;
         case (IO2):
-            return writeInt("/sys/class/gpio/unexport",IO2) +
-                writeInt("/sys/class/gpio/unexport",IO2A);
+            r = writeInt("/sys/class/gpio/unexport",IO2);
+            r += writeInt("/sys/class/gpio/unexport",IO2A);
+            return r;
             break;
         case (IO3):
-            return writeInt("/sys/class/gpio/unexport",IO3) +
-                writeInt("/sys/class/gpio/unexport",IO3A);
+            r = writeInt("/sys/class/gpio/unexport",IO3);
+            r += writeInt("/sys/class/gpio/unexport",IO3A);
+            return r;
             break;
         case (IO10):
-            return writeInt("/sys/class/gpio/unexport",IO10) +
-                writeInt("/sys/class/gpio/unexport",IO10A);
+            r = writeInt("/sys/class/gpio/unexport",IO10);
+            r += writeInt("/sys/class/gpio/unexport",IO10A);
+            return r;
             break;
         case (IO11):
-            return writeInt("/sys/class/gpio/unexport",IO11) +
-                writeInt("/sys/class/gpio/unexport",IO11A);
+            r = writeInt("/sys/class/gpio/unexport",IO11);
+            r += writeInt("/sys/class/gpio/unexport",IO11A);
+            return r;
             break;
         case (IO12):
-            return writeInt("/sys/class/gpio/unexport",IO12) +
-                writeInt("/sys/class/gpio/unexport",IO12A);
+            r = writeInt("/sys/class/gpio/unexport",IO12);
+            r += writeInt("/sys/class/gpio/unexport",IO12A);
+            return r;
             break;
         case (IO13):
-            return writeInt("/sys/class/gpio/unexport",IO13) +
-                writeInt("/sys/class/gpio/unexport",IO13A);
+            r = writeInt("/sys/class/gpio/unexport",IO13);
+            r += writeInt("/sys/class/gpio/unexport",IO13A);
+            return r;
             break;
         default:
             return writeInt("/sys/class/gpio/unexport",n);
