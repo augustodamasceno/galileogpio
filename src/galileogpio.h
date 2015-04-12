@@ -33,9 +33,6 @@
 
 #define HIGH 1
 #define LOW 0
-#define RANGE_IO "51"
-#define HIGH "1"
-#define LOW "0"
 #define IN "in"
 #define OUT "out"
 #define PULLUP "pullup"
