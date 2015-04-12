@@ -40,9 +40,13 @@
 #define STRONG "strong"
 #define HIZ "hiz"
 #define IO0 50
+#define IO0A 40
 #define IO1 51
+#define IO1A 41
 #define IO2 32
+#define IO2A 31
 #define IO3 18
+#define IO3A 30
 #define IO4 28
 #define IO5 17
 #define IO6 24
@@ -50,9 +54,13 @@
 #define IO8 28
 #define IO9 19
 #define IO10 16
+#define IO10A 42
 #define IO11 25
+#define IO11A 43
 #define IO12 38
+#define IO12A 54
 #define IO13 39
+#define IO13A 55
 #define ADMUX0 37
 #define ADMUX1 36
 #define ADMUX2 23

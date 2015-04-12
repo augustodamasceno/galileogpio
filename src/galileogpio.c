@@ -87,7 +87,109 @@ int readInt (char * f)
 
 int exportIO(unsigned char n)
 {
-    return writeInt("/sys/class/gpio/export",n);
+    int r;
+    switch (n)
+    {
+        case (IO0):
+            r = writeInt("/sys/class/gpio/export",IO0);
+            r += writeInt("/sys/class/gpio/export",IO0A);
+            r += direction(IO0A,OUT);
+            r += setDigital(IO0A,HIGH);
+            return r;
+            break;
+        case (IO1):
+            r = writeInt("/sys/class/gpio/export",IO1);
+            r += writeInt("/sys/class/gpio/export",IO1A);
+            r += direction(IO1A,OUT);
+            r += setDigital(IO1A,HIGH);
+            return r;
+            break;
+        case (IO2):
+            r = writeInt("/sys/class/gpio/export",IO2);
+            r += writeInt("/sys/class/gpio/export",IO2A);
+            r += direction(IO2A,OUT);
+            r += setDigital(IO2A,HIGH);
+            return r;
+            break;
+        case (IO3):
+            r = writeInt("/sys/class/gpio/export",IO3);
+            r += writeInt("/sys/class/gpio/export",IO3A);
+            r += direction(IO3A,OUT);
+            r += setDigital(IO3A,HIGH);
+            return r;
+            break;
+        case (IO10):
+            r = writeInt("/sys/class/gpio/export",IO10);
+            r += writeInt("/sys/class/gpio/export",IO10A);
+            r += direction(IO10A,OUT);
+            r += setDigital(IO10A,HIGH);
+            return r;
+            break;
+        case (IO11):
+            r = writeInt("/sys/class/gpio/export",IO11);
+            r += writeInt("/sys/class/gpio/export",IO11A);
+            r += direction(IO11A,OUT);
+            r += setDigital(IO11A,HIGH);
+            return r;
+            break;
+        case (IO12):
+            r = writeInt("/sys/class/gpio/export",IO12);
+            r += writeInt("/sys/class/gpio/export",IO12A);
+            r += direction(IO12A,OUT);
+            r += setDigital(IO12A,HIGH);
+            return r;
+            break;
+        case (IO13):
+            r = writeInt("/sys/class/gpio/export",IO13);
+            r += writeInt("/sys/class/gpio/export",IO13A);
+            r += direction(IO13A,OUT);
+            r += setDigital(IO13A,HIGH);
+            return r;
+            break;
+        default:
+            return writeInt("/sys/class/gpio/export",n);
+    }
+}
+
+int unexportIO(unsigned char n)
+{
+    switch (n)
+    {
+        case (IO0):
+            return writeInt("/sys/class/gpio/unexport",IO0) +
+                writeInt("/sys/class/gpio/unexport",IO0A);
+            break;
+        case (IO1):
+            return writeInt("/sys/class/gpio/unexport",IO1) +
+                writeInt("/sys/class/gpio/unexport",IO1A);
+            break;
+        case (IO2):
+            return writeInt("/sys/class/gpio/unexport",IO2) +
+                writeInt("/sys/class/gpio/unexport",IO2A);
+            break;
+        case (IO3):
+            return writeInt("/sys/class/gpio/unexport",IO3) +
+                writeInt("/sys/class/gpio/unexport",IO3A);
+            break;
+        case (IO10):
+            return writeInt("/sys/class/gpio/unexport",IO10) +
+                writeInt("/sys/class/gpio/unexport",IO10A);
+            break;
+        case (IO11):
+            return writeInt("/sys/class/gpio/unexport",IO11) +
+                writeInt("/sys/class/gpio/unexport",IO11A);
+            break;
+        case (IO12):
+            return writeInt("/sys/class/gpio/unexport",IO12) +
+                writeInt("/sys/class/gpio/unexport",IO12A);
+            break;
+        case (IO13):
+            return writeInt("/sys/class/gpio/unexport",IO13) +
+                writeInt("/sys/class/gpio/unexport",IO13A);
+            break;
+        default:
+            return writeInt("/sys/class/gpio/unexport",n);
+    }
 }
 
 int direction(unsigned char n, unsigned char * d)
