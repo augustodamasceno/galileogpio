@@ -210,7 +210,7 @@ int direction(unsigned char n, unsigned char * d)
 
 int drive(unsigned char n, unsigned char * d)
 {
-	char f [30];
+    char f [30];
     sprintf(f,"/sys/class/gpio/gpio%d/drive",n);
     return writeString(f,d);	
 }

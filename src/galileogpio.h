@@ -51,7 +51,7 @@
 #define IO5 17
 #define IO6 24
 #define IO7 27
-#define IO8 28
+#define IO8 26
 #define IO9 19
 #define IO10 16
 #define IO10A 42
