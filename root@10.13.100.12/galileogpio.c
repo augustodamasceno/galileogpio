@@ -230,28 +230,28 @@ int getDigital(unsigned char n)
 }
 
 // Analog Inputs
-
+/*
 int exportAnalog (unsigned char n)
 {
 	switch(n)
 	{
 		case ANALOG0:
-			return -!(!exportIO(ADMUX0) && !direction(ADMUX0,OUT) && setDigital(ADMUX0,LOW));
+			return -!(!exportIO(ADMUX0) && !direction(OUT) && !setValue(LOW));
 			break;
 		case ANALOG1:
-			return -!(!exportIO(ADMUX1) && !direction(ADMUX1,OUT) && setDigital(ADMUX1,LOW));
+			return -!(!exportIO(ADMUX1) && !direction(OUT) && !setValue(LOW));
 			break;
 		case ANALOG2:
-			return -!(!exportIO(ADMUX2) && !direction(ADMUX2,OUT) && setDigital(ADMUX2,LOW));
+			return -!(!exportIO(ADMUX2) && !direction(OUT) && !setValue(LOW));
 			break;
 		case ANALOG3:
-			return -!(!exportIO(ADMUX3) && !direction(ADMUX3,OUT) && setDigital(ADMUX3,LOW));
+			return -!(!exportIO(ADMUX3) && !direction(OUT) && !setValue(LOW));
 			break;
 		case ANALOG4:
-			return -!(!exportIO(ADMUX4A) && !direction(ADMUX4A,OUT) && setDigital(ADMUX4A,LOW) && !exportIO(ADMUX4B) && !direction(ADMUX4B,OUT) && setDigital(ADMUX4B,HIGH));
+			return -!(!exportIO(ADMUX4A) && !direction(OUT) && !setValue(LOW) && !exportIO(ADMUX4B) && !direction(OUT) && !setValue(HIGH));
 			break;
 		case ANALOG5:
-			return -!(!exportIO(ADMUX5A) && !direction(ADMUX5A,OUT) && setDigital(ADMUX5A,LOW) && !exportIO(ADMUX5B) && !direction(ADMUX5B,OUT) && setDigital(ADMUX5B,HIGH));
+			return -!(!exportIO(ADMUX5A) && !direction(OUT) && !setValue(LOW) && !exportIO(ADMUX5B) && !direction(OUT) && !setValue(HIGH));
 			break;
 		default:
 			return -1;
@@ -265,3 +265,4 @@ int getAnalog(unsigned char n)
 	sprintf(f,"/sys/bus/iio/devices/iio:device0/in_voltage%d_raw",n);
 	return readInt(f);
 }
+*/
