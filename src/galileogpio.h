@@ -75,6 +75,12 @@
 #define ANALOG3 3
 #define ANALOG4 4
 #define ANALOG5 5
+#define PWM3 3
+#define PWM5 5
+#define PWM6 6
+#define PWM9 1
+#define PWM10 7
+#define PWM11 4
 
 
 // File Manipulation.
@@ -82,6 +88,8 @@
 int writeString (char * f, char * t);
 
 int writeInt (char * f, int t);
+
+int writeLint (char * f, unsigned long int t);
 
 int readString (char * f, char * t);
 
@@ -107,12 +115,23 @@ int exportAnalog (unsigned char n);
 
 int getAnalog(unsigned char n);
 */
+
 // PWM
 
 int exportPWM(unsigned char n);
+
+int unexportPWM(unsigned char n);
+
 int enablePWM(unsigned char n);
-int setPeriodPWM(int period);
-int setDutyCycle(int dutyCycle);
+
+int disablePWM(unsigned char n);
+
+int setPeriodPWM(unsigned char n, unsigned long int period);
+
+int setDutyCyclePWM(unsigned char n, unsigned long int dutyCycle);
+
+int initPWM(unsigned char n, unsigned long int period,
+    unsigned long int dutyCycle);
 
 // Counters
 

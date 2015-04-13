@@ -55,6 +55,18 @@ int writeInt (char * f, int t)
     return 0;
 }
 
+int writeLint (char * f, unsigned long int t)
+{
+    FILE * rF;
+    rF = fopen(f,"r+");
+    if (rF == NULL)
+    {
+	return -1;
+    }
+    fprintf (rF,"%lu",t);
+    fclose (rF);
+    return 0;
+}
 
 int readString (char * f, char * t)
 {
@@ -264,4 +276,54 @@ int getAnalog(unsigned char n)
 	char f[51];
 	sprintf(f,"/sys/bus/iio/devices/iio:device0/in_voltage%d_raw",n);
 	return readInt(f);
+}
+
+
+// PWM
+
+int exportPWM(unsigned char n)
+{
+    return writeInt("/sys/class/pwm/pwmchip0/export",n);
+}
+
+int unexportPWM(unsigned char n)
+{
+    return writeInt("/sys/class/pwm/pwmchip0/unexport",n);
+}
+
+int enablePWM(unsigned char n)
+{
+    char f[40];
+    sprintf(f,"/sys/class/pwm/pwmchip0/pwm%d/enable",n);
+    writeInt(f,1);
+}
+
+int disablePWM(unsigned char n)
+{
+    char f[40];
+    sprintf(f,"/sys/class/pwm/pwmchip0/pwm%d/enable",n);
+    writeInt(f,0);
+}
+
+int setPeriodPWM(unsigned char n, unsigned long int period)
+{
+    char f[40];
+    sprintf(f,"/sys/class/pwm/pwmchip0/pwm%d/period",n);
+    writeLint(f,period);
+}
+
+int setDutyCyclePWM(unsigned char n, unsigned long int dutyCycle)
+{
+    char f[44];
+    sprintf(f,"/sys/class/pwm/pwmchip0/pwm%d/duty_cycle",n);
+    writeLint(f,dutyCycle);
+}
+
+int initPWM(unsigned char n, unsigned long int period,
+    unsigned long int dutyCycle)
+{
+    exportPWM(n);
+    enablePWM(n);
+    setPeriodPWM(n,period);
+    setDutyCyclePWM(n,dutyCycle);
 }
