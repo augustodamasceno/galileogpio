@@ -81,6 +81,8 @@
 #define PWM9 1
 #define PWM10 7
 #define PWM11 4
+#define US 1000
+#define MS 1000000
 
 
 // File Manipulation.
