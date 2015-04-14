@@ -247,23 +247,23 @@ int exportAnalog (unsigned char n)
 {
 	switch(n)
 	{
-		case ANALOG0:
-			return -!(!exportIO(ADMUX0) && !direction(ADMUX0,OUT) && setDigital(ADMUX0,LOW));
+		case A0:
+			return -(exportIO(ADMUX0) || direction(ADMUX0,OUT) || setDigital(ADMUX0,LOW));
 			break;
-		case ANALOG1:
-			return -!(!exportIO(ADMUX1) && !direction(ADMUX1,OUT) && setDigital(ADMUX1,LOW));
+		case A1:
+			return -(exportIO(ADMUX1) || direction(ADMUX1,OUT) || setDigital(ADMUX1,LOW));
 			break;
-		case ANALOG2:
-			return -!(!exportIO(ADMUX2) && !direction(ADMUX2,OUT) && setDigital(ADMUX2,LOW));
+		case A2:
+			return -(exportIO(ADMUX2) || direction(ADMUX2,OUT) || setDigital(ADMUX2,LOW));
 			break;
-		case ANALOG3:
-			return -!(!exportIO(ADMUX3) && !direction(ADMUX3,OUT) && setDigital(ADMUX3,LOW));
+		case A3:
+			return -(exportIO(ADMUX3) || direction(ADMUX3,OUT) || setDigital(ADMUX3,LOW));
 			break;
-		case ANALOG4:
-			return -!(!exportIO(ADMUX4A) && !direction(ADMUX4A,OUT) && setDigital(ADMUX4A,LOW) && !exportIO(ADMUX4B) && !direction(ADMUX4B,OUT) && setDigital(ADMUX4B,HIGH));
+		case A4:
+			return -(exportIO(ADMUX4A) || direction(ADMUX4A,OUT) || setDigital(ADMUX4A,LOW) && exportIO(ADMUX4B) || direction(ADMUX4B,OUT) || setDigital(ADMUX4B,HIGH));
 			break;
-		case ANALOG5:
-			return -!(!exportIO(ADMUX5A) && !direction(ADMUX5A,OUT) && setDigital(ADMUX5A,LOW) && !exportIO(ADMUX5B) && !direction(ADMUX5B,OUT) && setDigital(ADMUX5B,HIGH));
+		case A5:
+			return -(exportIO(ADMUX5A) || direction(ADMUX5A,OUT) || setDigital(ADMUX5A,LOW) && exportIO(ADMUX5B) || direction(ADMUX5B,OUT) || setDigital(ADMUX5B,HIGH));
 			break;
 		default:
 			return -1;
