@@ -243,27 +243,89 @@ int getDigital(unsigned char n)
 
 // Analog Inputs
 
-int exportAnalog (unsigned char n)
+int enableAnalog (unsigned char n)
 {
+	int r;
 	switch(n)
 	{
 		case A0:
-			return -(exportIO(ADMUX0) || direction(ADMUX0,OUT) || setDigital(ADMUX0,LOW));
+			r = exportIO(ADMUX0);
+			r += direction(ADMUX0,OUT);
+			r += setDigital(ADMUX0,LOW);
+			return r;
 			break;
 		case A1:
-			return -(exportIO(ADMUX1) || direction(ADMUX1,OUT) || setDigital(ADMUX1,LOW));
+			r = exportIO(ADMUX1);
+			r += direction(ADMUX1,OUT);
+			r += setDigital(ADMUX1,LOW);
+			return r;
 			break;
 		case A2:
-			return -(exportIO(ADMUX2) || direction(ADMUX2,OUT) || setDigital(ADMUX2,LOW));
+			r = exportIO(ADMUX2);
+			r += direction(ADMUX2,OUT);
+			r += setDigital(ADMUX2,LOW);
+			return r;
 			break;
 		case A3:
-			return -(exportIO(ADMUX3) || direction(ADMUX3,OUT) || setDigital(ADMUX3,LOW));
+			r = exportIO(ADMUX3);
+			r += direction(ADMUX3,OUT);
+			r += setDigital(ADMUX3,LOW);
+			return r;
 			break;
 		case A4:
-			return -(exportIO(ADMUX4A) || direction(ADMUX4A,OUT) || setDigital(ADMUX4A,LOW) && exportIO(ADMUX4B) || direction(ADMUX4B,OUT) || setDigital(ADMUX4B,HIGH));
+			r = exportIO(ADMUX4A);
+			r += direction(ADMUX4A,OUT);
+			r += setDigital(ADMUX4A,LOW);
+			r += exportIO(ADMUX4B);
+			r += direction(ADMUX4B,OUT);
+			r += setDigital(ADMUX4B,HIGH);
+			return r;
 			break;
 		case A5:
-			return -(exportIO(ADMUX5A) || direction(ADMUX5A,OUT) || setDigital(ADMUX5A,LOW) && exportIO(ADMUX5B) || direction(ADMUX5B,OUT) || setDigital(ADMUX5B,HIGH));
+			r = exportIO(ADMUX5A);
+			r += direction(ADMUX5A,OUT);
+			r += setDigital(ADMUX5A,LOW);
+			r += exportIO(ADMUX5B);
+			r += direction(ADMUX5B,OUT);
+			r += setDigital(ADMUX5B,HIGH);
+			return r;
+			break;
+		default:
+			return -1;
+			break;
+	}
+}
+
+int disableAnalog (unsigned char n)
+{
+	int r;
+	switch(n)
+	{
+		case A0:
+			r = unexportIO(ADMUX0);
+			return r;
+			break;
+		case A1:
+			r = unexportIO(ADMUX1);
+			return r;
+			break;
+		case A2:
+			r = unexportIO(ADMUX2);
+			return r;
+			break;
+		case A3:
+			r = unexportIO(ADMUX3);
+			return r;
+			break;
+		case A4:
+			r = unexportIO(ADMUX4A);
+			r += unexportIO(ADMUX4B);
+			return r;
+			break;
+		case A5:
+			r = unexportIO(ADMUX5A);
+			r += unexportIO(ADMUX5B);
+			return r;
 			break;
 		default:
 			return -1;
