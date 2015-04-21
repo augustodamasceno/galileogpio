@@ -340,7 +340,6 @@ int getAnalog(unsigned char n)
 	return readInt(f);
 }
 
-
 // PWM
 
 int exportPWM(unsigned char n)

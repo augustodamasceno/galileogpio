@@ -133,10 +133,4 @@ int setDutyCyclePWM(unsigned char n, unsigned long int dutyCycle);
 int initPWM(unsigned char n, unsigned long int period,
     unsigned long int dutyCycle);
 
-// Counters
-
-
-// Interrupts
-
-
 #endif
